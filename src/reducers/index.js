@@ -25,11 +25,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         activeYear: payload,
-        launches: state.activeYear
-          ? state.launches.filter(
-              (launch) => Number(getYear(launch)) === Number(payload)
-            )
-          : state.launches,
+        launches: state.launches.filter(
+          (launch) => getYear(launch) === payload
+        ),
       };
     default:
       return state;
