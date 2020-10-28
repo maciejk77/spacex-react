@@ -3,6 +3,7 @@ import Main from '../Main';
 import logo from '../../assets/spacex-logo.png';
 import { fetchLaunches } from '../../actions';
 import { useDispatch } from 'react-redux';
+import reloadIcon from '../../assets/icon/refresh.png';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,8 @@ const App = () => {
     dispatch(fetchLaunches());
   }, [dispatch]);
 
+  // TODO dispatch RELOAD, to reset TOGGLE_SORT, SET_ACTIVE_YEAR and FETCH_LAUNCHES ?
+
   return (
     <div>
       <div style={styles.header}>
@@ -18,7 +21,10 @@ const App = () => {
           <img src={logo} height="25px" width="225px" alt="spacex-logo" />
           LAUNCHES
         </span>
-        <div>[Reload Data]</div>
+        <span>
+          Reload Data
+          <img src={reloadIcon} style={{ backgroundColor: 'blue' }} />
+        </span>
       </div>
       <Main />
     </div>
