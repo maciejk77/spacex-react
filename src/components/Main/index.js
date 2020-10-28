@@ -1,37 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from '../List';
 import { useSelector, useDispatch } from 'react-redux';
 import launchPhoto from '../../assets/img/launch-home.png';
 import sortIcon from '../../assets/icon/sort.png';
-// import { FILTER_BY_DATE } from '../../consts';
+import { FILTER_YEAR, TOGGLE_SORT } from '../../consts';
 
 const Main = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const launches = useSelector((state) => state.launches);
-  console.log(launches[0]);
-  const [isAscending, setIsAscending] = useState(true);
-  const [yearFilter, setYearFilter] = useState(null);
+  const isAscending = useSelector((state) => state.isAscending);
+  // console.log(launches[0]);
 
   const date = (string) => string.date_local;
   const years = launches.map((l) => date(l).split('-')[0]);
   const uniqueYears = [...new Set(years)];
 
-  const sortedLaunches = isAscending
-    ? launches.sort((a, b) => date(a).localeCompare(date(b)))
-    : launches.sort((a, b) => date(b).localeCompare(date(a)));
+  const handleChange = (e) =>
+    dispatch({ type: FILTER_YEAR, payload: e.target.value });
 
-  const filteredLaunches = (year) => {
-    if (!year) return sortedLaunches;
-    return sortedLaunches.filter((l) => date(l).split('-')[0] === year);
-  };
-
-  // TODO dispatch SET_ACTIVE_YEAR ?
-  // TODO dispatch TOGGLE_SORT ?
+  const handleClick = (e) => dispatch({ type: TOGGLE_SORT });
 
   return (
     <div>
       <div style={styles.buttons}>
-        <select onChange={(e) => setYearFilter(e.target.value)}>
+        <select onChange={handleChange}>
           <option value="">Filter by Year</option>
           {uniqueYears.map((year) => (
             <option key={year} value={year}>
@@ -39,14 +31,24 @@ const Main = () => {
             </option>
           ))}
         </select>
-        <button onClick={() => setIsAscending(!isAscending)}>
+        <button onClick={handleClick}>
           {`Sort ${isAscending ? 'Descending' : 'Ascending'}`}
-          <img src={sortIcon} style={{ backgroundColor: 'blue' }} />
+          <img
+            alt="sort-icon"
+            src={sortIcon}
+            style={{ backgroundColor: 'blue' }}
+          />
         </button>
       </div>
       <div style={styles.flex}>
-        <img src={launchPhoto} style={styles.photo} width="300" height="400" />
-        <List launches={filteredLaunches(yearFilter)} />
+        <img
+          alt="launch"
+          src={launchPhoto}
+          style={styles.photo}
+          width="300"
+          height="400"
+        />
+        <List />
       </div>
     </div>
   );

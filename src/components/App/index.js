@@ -1,29 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import Main from '../Main';
-import logo from '../../assets/spacex-logo.png';
 import { fetchLaunches } from '../../actions';
 import { useDispatch } from 'react-redux';
+import logo from '../../assets/spacex-logo.png';
 import reloadIcon from '../../assets/icon/refresh.png';
 
 const App = () => {
   const dispatch = useDispatch();
+  const loadData = useCallback(() => dispatch(fetchLaunches()), [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchLaunches());
-  }, [dispatch]);
-
-  // TODO dispatch RELOAD, to reset TOGGLE_SORT, SET_ACTIVE_YEAR and FETCH_LAUNCHES ?
+    loadData();
+  }, [dispatch, loadData]);
 
   return (
     <div>
       <div style={styles.header}>
         <span>
-          <img src={logo} height="25px" width="225px" alt="spacex-logo" />
+          <img alt="spacex-logo" src={logo} height="25px" width="225px" />
           LAUNCHES
         </span>
-        <span>
+        <span onClick={loadData}>
           Reload Data
-          <img src={reloadIcon} style={{ backgroundColor: 'blue' }} />
+          <img
+            alt="reload-icon"
+            src={reloadIcon}
+            style={{ backgroundColor: 'blue' }}
+          />
         </span>
       </div>
       <Main />
