@@ -11,7 +11,7 @@ export default createUseStyles(
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: 5,
-      padding: '0 20px',
+      padding: '20px 0 20px 20px',
     },
     logo: {
       alignItems: 'baseline',
