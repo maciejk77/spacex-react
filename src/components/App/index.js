@@ -2,44 +2,41 @@ import React, { useEffect, useCallback } from 'react';
 import Main from '../Main';
 import { fetchLaunches } from '../../actions';
 import { useDispatch } from 'react-redux';
+import useStyles from './styles';
 import logo from '../../assets/spacex-logo.png';
 import reloadIcon from '../../assets/icon/refresh.png';
+import { RESET_FILTER } from '../../consts';
 
 const App = () => {
   const dispatch = useDispatch();
   const loadData = useCallback(() => dispatch(fetchLaunches()), [dispatch]);
+  const classes = useStyles();
 
   useEffect(() => {
     loadData();
+    dispatch({ type: RESET_FILTER });
   }, [dispatch, loadData]);
 
   return (
-    <div>
-      <div style={styles.header}>
-        <span>
+    <div className={classes.app}>
+      <div className={classes.header}>
+        <div className={classes.logo}>
           <img alt="spacex-logo" src={logo} height="25px" width="225px" />
-          LAUNCHES
-        </span>
-        <span onClick={loadData}>
+          <div className="classes.logoLabel">LAUNCHES</div>
+        </div>
+        <span className={classes.reload} onClick={loadData}>
           Reload Data
           <img
             alt="reload-icon"
+            width="10px"
+            className={classes.reloadImage}
             src={reloadIcon}
-            style={{ backgroundColor: 'blue' }}
           />
         </span>
       </div>
       <Main />
     </div>
   );
-};
-
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    border: '1px solid red',
-  },
 };
 
 export default App;

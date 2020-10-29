@@ -1,13 +1,16 @@
-import { FETCH_LAUNCHES, TOGGLE_SORT, FILTER_YEAR } from '../consts';
+import {
+  FETCH_LAUNCHES,
+  TOGGLE_SORT,
+  FILTER_YEAR,
+  RESET_FILTER,
+} from '../consts';
+import { date, getYear } from '../utils';
 
 const initialState = {
   launches: [],
   isAscending: true,
   activeYear: '',
 };
-
-const date = (object) => object.date_local;
-const getYear = (object) => date(object).split('-')[0];
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -29,6 +32,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
           (launch) => getYear(launch) === payload
         ),
       };
+    case RESET_FILTER:
+      return { ...state, activeYear: '', isAscending: true }; // doesn't work
     default:
       return state;
   }
