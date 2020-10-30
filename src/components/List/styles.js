@@ -2,30 +2,40 @@ import { createUseStyles } from 'react-jss';
 
 export default createUseStyles(
   (theme) => ({
-    // list: { border: '1px solid blue' },
+    list: {
+      margin: '5px 10px',
+    },
     item: {
-      border: `1px solid ${theme.baseColour2}`,
-      borderRadius: 3,
-      boxShadow: '2px 2px 2px 0px rgba(0,0,0,0.3)',
+      borderRadius: 5,
+      boxShadow: '0px 1px 1px 1px rgba(0,0,0,0.1)',
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: 5,
       listStyleType: 'none',
-      padding: 10,
-      minWidth: theme.minWidth,
+      marginBottom: 5,
+      padding: 5,
     },
     indexName: {
+      alignItems: 'center',
+      display: 'flex',
       fontFamily: theme.baseFont,
-      fontSize: theme.fontSize1,
+      fontSize: theme.baseFontSize,
+      lineHeight: 1.25,
+      width: '75%',
+    },
+    dateRocket: {
+      alignItems: 'flex-end',
+      display: 'flex',
+      flexDirection: 'column',
+      height: 25,
+      justifyContent: 'space-between',
     },
     date: {
       display: 'flex',
       justifyContent: 'flex-end',
-      fontSize: theme.fontSize1 / 1.5,
+      fontSize: theme.baseFontSize * 0.8,
     },
-
     rocket: {
-      fontSize: theme.fontSize1 / 1.25,
+      fontSize: theme.baseFontSize * 0.9,
     },
   }),
   { name: 'list' }

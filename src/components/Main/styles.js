@@ -2,30 +2,29 @@ import { createUseStyles } from 'react-jss';
 
 export default createUseStyles(
   (theme) => ({
-    flex: {
-      display: 'flex',
-    },
+    container: {},
     buttons: {
       display: 'flex',
-      justifyContent: 'flex-end',
-      margin: '0 50px',
+      justifyContent: 'center',
+      width: '100%',
     },
     button: {
       backgroundColor: theme.themeColour1,
       color: theme.baseColour,
       display: 'flex',
       fontFamily: theme.baseFont,
-      fontSize: theme.baseFontSize,
-      justifyContent: 'space-between',
+      fontSize: theme.baseFontSize - 2,
+      justifyContent: 'space-evenly',
+      marginLeft: 2,
       padding: 7,
-      width: 115,
+      width: 110,
     },
     sort: {
-      height: 12,
-      marginLeft: 5,
-      width: 10,
+      height: 10,
+      marginLeft: 2,
+      width: 8,
     },
-    photo: { margin: 25 },
+    photo: { display: 'none', height: 400, margin: 25, width: 300 },
   }),
   { name: 'main' }
 );

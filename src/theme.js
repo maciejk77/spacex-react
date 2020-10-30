@@ -35,6 +35,6 @@ export const theme = {
   //   },
   // ],
 
-  minWidth: 450,
+  minWidth: 320,
   maxWidth: 1024,
 };

@@ -21,14 +21,15 @@ const App = () => {
     <div className={classes.app}>
       <div className={classes.header}>
         <div className={classes.logo}>
-          <img alt="spacex-logo" src={logo} height="25px" width="225px" />
-          <div className="classes.logoLabel">LAUNCHES</div>
+          <img alt="spacex-logo" className={classes.logoIcon} src={logo} />
+          <div className={classes.logoLabel}>LAUNCHES</div>
         </div>
         <span className={classes.reload} onClick={loadData}>
           Reload Data
           <img
             alt="reload-icon"
-            width="10px"
+            height="8px"
+            width="8px"
             className={classes.reloadImage}
             src={reloadIcon}
           />

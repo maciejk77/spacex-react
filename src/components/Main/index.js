@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import List from '../List';
+import Dropdown from '../Dropdown';
 import { useSelector, useDispatch } from 'react-redux';
 import { FILTER_YEAR, TOGGLE_SORT } from '../../consts';
 import { getYear } from '../../utils';
@@ -14,38 +15,36 @@ const Main = () => {
   const isAscending = useSelector((state) => state.isAscending);
   //console.log(launches[0]);
 
+  const [value, setValue] = useState(null);
+
   const years = launches.map((launch) => getYear(launch));
   const uniqueYears = [...new Set(years)];
 
-  const handleChange = (e) =>
-    dispatch({ type: FILTER_YEAR, payload: e.target.value });
+  const handleChange = (e) => {
+    setValue(e);
+    dispatch({ type: FILTER_YEAR, payload: e });
+  };
 
   const handleClick = (e) => dispatch({ type: TOGGLE_SORT });
 
   return (
     <div>
       <div className={classes.buttons}>
-        <select onChange={handleChange}>
-          <option value="">Filter by Year</option>
-          {uniqueYears.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
+        <Dropdown
+          options={uniqueYears}
+          prompt="Filter By Year"
+          value={value}
+          onChange={handleChange}
+        />
+
         <div className={classes.button} onClick={handleClick}>
           {`Sort ${isAscending ? 'Descending' : 'Ascending'}`}
           <img alt="sort-icon" className={classes.sort} src={sortIcon} />
         </div>
       </div>
-      <div className={classes.flex}>
-        <img
-          alt="launch"
-          src={launchPhoto}
-          className={classes.photo}
-          width="300"
-          height="400"
-        />
+
+      <div className={classes.container}>
+        <img alt="launch" src={launchPhoto} className={classes.photo} />
         <List />
       </div>
     </div>

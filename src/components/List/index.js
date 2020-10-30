@@ -9,11 +9,12 @@ const List = () => {
   const classes = useStyles();
   const launches = useSelector((state) => state.launches);
   return (
+    // <div style={{ border: '1px solid red' }}>
     <ul className={classes.list}>
       {launches.map(({ id, name, date_local }, index) => (
         <li className={classes.item} key={id}>
           <div className={classes.indexName}>{`#${index + 1} ${name}`}</div>
-          <div>
+          <div className={classes.dateRocket}>
             <div className={classes.date}>{`${getYearWithoutTime(
               date_local
             )}`}</div>
@@ -22,6 +23,7 @@ const List = () => {
         </li>
       ))}
     </ul>
+    // </div>
   );
 };
 
