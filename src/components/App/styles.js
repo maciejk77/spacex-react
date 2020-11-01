@@ -18,7 +18,7 @@ export default createUseStyles(
       alignItems: 'baseline',
       color: theme.baseColour1,
       display: 'flex',
-      flexWrap: 'wrap',
+      flexDirection: 'column',
       fontFamily: theme.baseFont,
       lineHeight: 1.25,
     },
@@ -42,6 +42,17 @@ export default createUseStyles(
       width: 75,
     },
     reloadImage: { marginLeft: 5 },
+
+    '@media (min-width: 480px)': {
+      logo: { flexDirection: 'row' },
+      logoLabel: { marginLeft: -20 },
+    },
+    '@media (min-width: 1024px)': {
+      app: {
+        marginTop: 20,
+        border: '1px solid lightgray',
+      },
+    },
   }),
   { name: 'app' }
 );

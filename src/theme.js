@@ -8,7 +8,7 @@ export const theme = {
   themeColour1: '#055288',
 
   // fonts
-  baseFont: 'Verdana',
+  baseFont: 'system-ui',
   baseFontSize: 12,
   fontSize1: 18,
 

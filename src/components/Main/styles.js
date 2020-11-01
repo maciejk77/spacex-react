@@ -6,6 +6,7 @@ export default createUseStyles(
     buttons: {
       display: 'flex',
       justifyContent: 'center',
+      marginBottom: 20,
       width: '100%',
     },
     button: {
@@ -24,7 +25,24 @@ export default createUseStyles(
       marginLeft: 2,
       width: 8,
     },
-    photo: { display: 'none', height: 400, margin: 25, width: 300 },
+    photo: { display: 'none', height: 400, margin: 20, width: 300 },
+    '@media (min-width: 480px)': {
+      photo: { display: 'flex', height: 225, width: 180 },
+      container: {
+        display: 'flex',
+        flexDirection: 'row',
+      },
+    },
+    '@media (min-width: 768px)': {
+      buttons: {
+        justifyContent: 'flex-end',
+        width: '99%',
+      },
+      photo: {
+        height: 450,
+        width: 350,
+      },
+    },
   }),
   { name: 'main' }
 );

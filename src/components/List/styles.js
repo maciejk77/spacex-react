@@ -26,6 +26,7 @@ export default createUseStyles(
       alignItems: 'flex-end',
       display: 'flex',
       flexDirection: 'column',
+      fontFamily: theme.baseFont,
       height: 25,
       justifyContent: 'space-between',
     },
@@ -36,6 +37,14 @@ export default createUseStyles(
     },
     rocket: {
       fontSize: theme.baseFontSize * 0.9,
+    },
+    '@media (min-width: 480px)': {
+      dateRocket: { fontSize: theme.baseFontSize * 1.25 },
+      indexName: { width: '50%', fontSize: theme.baseFontSize * 1.25 },
+      list: { width: '100%' },
+      dateRocket: { padding: 5, height: 40 },
+      date: { fontSize: theme.baseFontSize * 1.25 },
+      rocket: { fontSize: theme.baseFontSize * 1.25 },
     },
   }),
   { name: 'list' }

@@ -25,3 +25,17 @@ Considerations we will be looking for in your submission are:
 - Network logic
 
 Please complete the task using a Git source control tool such as GitHub or Bitbucket. Remember to commit your code regularly. And as your submission, please provide access and the URL to the repository.
+
+# TODO
+
+- format date to DD MMM YYY
+- apply custom fonts from assets folder
+- general clean up, work on near to 'pixel perfect' UI vs the brief given,
+- turn dropdown CSS file style.css to .js JSS
+- reset dropdown after Reload, close dropdown when away from dropdown
+
+# Screenshot
+
+Click here for [**live app**](https://https://youthful-sammet-58ff7d.netlify.app/) /
+
+<img src="src/assets/screenshot.png" width="480">
