@@ -36,6 +36,6 @@ Please complete the task using a Git source control tool such as GitHub or Bitbu
 
 # Screenshot
 
-Click here for [**live app**](https://https://youthful-sammet-58ff7d.netlify.app/) /
+Click here for [**live app**](https://5f9f2604decc869e4b114da9--youthful-sammet-58ff7d.netlify.app/)
 
-<img src="src/assets/screenshot.png" width="480">
+<img src="src/assets/screenshot.png" width="768">
